@@ -12,16 +12,28 @@ import validationOptions from './utils/validation-options';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import * as fs from 'fs';
+import { config } from 'dotenv';
+
+config();
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { cors: true });
+  const httpsOptions = {
+    key: fs.readFileSync(process.env.SSL_KEY_PATH),
+    cert: fs.readFileSync(process.env.SSL_CERT_PATH),
+  };
+
+  const app = await NestFactory.create(AppModule, {
+    httpsOptions,
+  });
+
+  app.enableCors({
+    origin: 'http://localhost:443',
+    methods: '*',
+    allowedHeaders: '*',
+  });
+
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
   const configService = app.get(ConfigService);
-
-  // const httpsOptions = {
-  //   key: fs.readFileSync(configService.get('app.sslKeyPath')),
-  //   cert: fs.readFileSync(configService.get('app.sslCertPath')),
-  // };
 
   app.enableShutdownHooks();
   app.setGlobalPrefix(configService.get('app.apiPrefix'), {

@@ -282,58 +282,81 @@ export class CheckoutService {
   }
 
   async paypal_checkout(user: User, body: any): Promise<any> {
+    const paypalEndpoint = `${process.env.BASE_URL}/v2/checkout/orders`;
+    const clientId = process.env.PAYPAL_CLIENT_ID;
+    const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
+
+    const paymentId = body.paymentId;
+    const payerId = body.payerId;
     const Card = body.card;
     const ShippingAddress = body.shippingAddress;
     const BillingAddress = body.billingAddress;
     const ConfirmationNumber = crypto.randomBytes(16).toString('hex');
 
-    const product = await this.productService.create({
-      name: Card.product_name,
-      size: Card.size,
-      price: Card.total,
-      ImgUrl: Card.ImgUrl,
-      type: Card.type,
-      itemReferenceId: Card.itemReferenceId,
-      quantity: Card.quantity,
-      productUid: Card.productUid,
-    });
-
-    const billing = await this.billingService.create({
-      firstName: BillingAddress.firstName,
-      lastName: BillingAddress.lastName,
-      address: BillingAddress.address,
-      city: BillingAddress.city,
-      state: BillingAddress.state,
-      zip: BillingAddress.zip,
-      country: BillingAddress.country,
-    });
-
-    const shipping = await this.shippingService.create({
-      firstName: ShippingAddress.firstName,
-      lastName: ShippingAddress.lastName,
-      address: ShippingAddress.address,
-      city: ShippingAddress.city,
-      state: ShippingAddress.state,
-      zip: ShippingAddress.zip,
-      country: ShippingAddress.country,
-      email: ShippingAddress.email,
-      phone: ShippingAddress.phone,
-    });
-
-    const order = await this.orderService.create(user.id, {
-      status: 'Confirmed',
-      paymentMethod: 'Paypal',
-      subtotal: Card.total,
-      total: Card.total,
-      shippingType:
-        Card.shippingCost === 0 ? 'Free Shipping' : 'Exress Shipping',
-      confirmationNumber: ConfirmationNumber,
-      billing: billing,
-      shipping: shipping,
-      product: product,
-    });
-
     try {
+      const response = await axios.get(`${paypalEndpoint}/${paymentId}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        auth: {
+          username: clientId,
+          password: clientSecret,
+        },
+      });
+
+      if (response.data.status !== 'COMPLETED') {
+        throw new HttpException(
+          'Payment not completed',
+          HttpStatus.UNPROCESSABLE_ENTITY,
+        );
+      }
+
+      const product = await this.productService.create({
+        name: Card.product_name,
+        size: Card.size,
+        price: Card.total,
+        ImgUrl: Card.ImgUrl,
+        type: Card.type,
+        itemReferenceId: Card.itemReferenceId,
+        quantity: Card.quantity,
+        productUid: Card.productUid,
+      });
+
+      const billing = await this.billingService.create({
+        firstName: BillingAddress.firstName,
+        lastName: BillingAddress.lastName,
+        address: BillingAddress.address,
+        city: BillingAddress.city,
+        state: BillingAddress.state,
+        zip: BillingAddress.zip,
+        country: BillingAddress.country,
+      });
+
+      const shipping = await this.shippingService.create({
+        firstName: ShippingAddress.firstName,
+        lastName: ShippingAddress.lastName,
+        address: ShippingAddress.address,
+        city: ShippingAddress.city,
+        state: ShippingAddress.state,
+        zip: ShippingAddress.zip,
+        country: ShippingAddress.country,
+        email: ShippingAddress.email,
+        phone: ShippingAddress.phone,
+      });
+
+      const order = await this.orderService.create(user.id, {
+        status: 'Confirmed',
+        paymentMethod: 'Paypal',
+        subtotal: Card.total,
+        total: Card.total,
+        shippingType:
+          Card.shippingCost === 0 ? 'Free Shipping' : 'Exress Shipping',
+        confirmationNumber: ConfirmationNumber,
+        billing: billing,
+        shipping: shipping,
+        product: product,
+      });
+
       await this.GelatoCreateOrder(user.id, order);
       return {
         url: `${process.env.FRONTEND_DOMAIN}/confirmation?session_id=${ConfirmationNumber}`,
