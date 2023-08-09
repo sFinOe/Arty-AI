@@ -37,9 +37,9 @@ import Confirmation from "pages/Confirmation";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { PrivateRoute, AdminRoute, FlexRoute } from "Utils/PrivateRoute";
+import { PrivateRoute, AdminRoute, FlexRoute } from "routing/PrivateRoute";
 import { GetAuthMe } from "api/auth";
-import { store } from "./store";
+import { store } from "../store";
 import { Provider, useSelector, useDispatch } from "react-redux";
 
 function HandleContinueStatus() {

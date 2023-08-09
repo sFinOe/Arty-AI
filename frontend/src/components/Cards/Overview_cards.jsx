@@ -42,7 +42,7 @@ export function Overview_cards() {
             )}
             <Spacer y={0.5} />
             <Grid css={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-              <Text css={{ fontSize: "16px", fontFamily: "poppins", color: "#838993", color: "#6AD3B1", letterSpacing: "0.3px" }}>
+              <Text css={{ fontSize: "16px", fontFamily: "poppins", color: "#6AD3B1", letterSpacing: "0.3px" }}>
                 {budget[0]?.difference > 0 ? budget[0]?.difference : 0}%
               </Text>
               <Spacer x={0.5} />
@@ -80,7 +80,7 @@ export function Overview_cards() {
             )}
             <Spacer y={0.5} />
             <Grid css={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-              <Text css={{ fontSize: "16px", fontFamily: "poppins", color: "#838993", color: "#6AD3B1", letterSpacing: "0.3px" }}>
+              <Text css={{ fontSize: "16px", fontFamily: "poppins", color: "#6AD3B1", letterSpacing: "0.3px" }}>
                 {TotalCustomers.difference > 0 ? TotalCustomers.difference : 0}%
               </Text>
               <Spacer x={0.5} />
@@ -117,7 +117,7 @@ export function Overview_cards() {
             )}
             <Spacer y={0.5} />
             <Grid css={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-              <Text css={{ fontSize: "16px", fontFamily: "poppins", color: "#838993", color: "#6AD3B1", letterSpacing: "0.3px" }}>
+              <Text css={{ fontSize: "16px", fontFamily: "poppins", color: "#6AD3B1", letterSpacing: "0.3px" }}>
                 {TotalOrders.difference > 0 ? TotalOrders.difference : 0}%
               </Text>
               <Spacer x={0.5} />

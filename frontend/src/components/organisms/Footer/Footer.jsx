@@ -10,7 +10,7 @@ import { SiPlanetscale } from "react-icons/si";
 const ButtomNavigation = () => {
   const token = localStorage.getItem("jwtToken");
   if (token) {
-    return <div></div>;
+    return null;
   }
 
   return (

@@ -8,7 +8,7 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { Descriptions } from "@arco-design/web-react";
 import { PostStripeCheckout, PostPaypalCheckout } from "api/checkout";
 import { getAlpha2Code, registerLocale } from "i18n-iso-countries";
-registerLocale(require("i18n-iso-countries/langs/en.json"));
+// registerLocale(require("i18n-iso-countries/langs/en.json"));
 
 const cdata = [
   "Afghanistan",
