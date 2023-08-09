@@ -211,6 +211,9 @@ function Wizard_checkout({ wizardProps }) {
   const [ShippingDetails, setShippingDetails] = useState({});
   const [BillingDetails, setBillingDetails] = useState({});
 
+  const [paymentId, setPaymentId] = useState("");
+  const [payerId, setPayerId] = useState("");
+
   const [Disable, setDisable] = useState(false);
 
   const [CompleteFrom, setCompleteFrom] = useState(false);
@@ -348,6 +351,8 @@ function Wizard_checkout({ wizardProps }) {
     }
 
     const payload = {
+      paymentId: paymentId,
+      payerId: payerId,
       card: {
         product_name: wizardProps.PreCheckoutData.product_name,
         price: wizardProps.PreCheckoutData.price,
@@ -522,6 +527,8 @@ function Wizard_checkout({ wizardProps }) {
   const onApprove = (data, actions) => {
     return actions.order.capture().then(function (details) {
       console.log(details);
+      setPaymentId(details.id);
+      setPayerId(details.payer.payer_id);
       PostPaypalCheckout(Payload).then((res) => {
         console.log(res);
         if (res.body.url) {
