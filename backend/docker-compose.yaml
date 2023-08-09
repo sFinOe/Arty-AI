@@ -22,7 +22,7 @@ services:
     volumes:
       - ./node_modules:/app/node_modules
       - ./dist:/app/dist
-      - /home/imgtoart/ssl:/etc/certs
+      - /etc/certs:/etc/certs
     depends_on:
       - img_to_art_postgres
     env_file:
@@ -36,7 +36,7 @@ services:
       dockerfile: frontend.Dockerfile
     volumes:
       - ../frontend/dist:/usr/share/nginx/html
-      - /home/imgtoart/ssl:/etc/certs
+      - /etc/certs:/etc/certs
     depends_on:
       - img_to_art_backend
     ports:
