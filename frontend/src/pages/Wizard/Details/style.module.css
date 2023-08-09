@@ -1,0 +1,23 @@
+.bg_css {
+  background-color: #fff;
+  padding: 50px 50px 50px 50px !important;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
+
+.layout_css {
+  display: flex;
+  flex-direction: row;
+}
+
+.Img_css {
+  border-radius: 5px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+@media (max-width: 768px) {
+  .layout_css {
+    flex-direction: column;
+    align-items: center;
+  }
+}

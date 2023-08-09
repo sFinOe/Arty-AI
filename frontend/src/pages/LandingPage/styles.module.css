@@ -1,0 +1,174 @@
+body {
+  font-family: "Poppins";
+}
+
+.Homebody {
+  background: url(https://svgshare.com/i/rZc.svg) center 34% repeat-x;
+  background-position: center 5%;
+}
+
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Preview {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.Text_preview {
+  width: 50%;
+}
+
+.Header_image {
+  width: 50%;
+}
+
+.Text_container {
+  text-align: center;
+  width: 80%;
+}
+
+.Header_feature {
+  background-color: #eadcf8;
+  width: 40%;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.Header_exp_text {
+  font-size: 1.125rem;
+  font-family: Poppins;
+  color: #595858;
+  width: 80%;
+}
+
+.Header_button {
+  margin-top: 2em !important;
+  padding: 1.5em 2.2em 1.5em 2.2em !important;
+  font-size: 1.375rem;
+  font-weight: bold;
+}
+
+.Text_wedo {
+  font-size: 1.563rem;
+  font-family: Poppins;
+  color: #595858 !important;
+}
+
+.Canvas_preview {
+  background-color: #eadcf8;
+  align-items: center;
+  display: flex;
+  width: 80%;
+  padding-top: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
+  border-radius: 0.625rem;
+  flex-wrap: wrap;
+}
+
+.Canvas_container {
+  width: 60%;
+  justify-content: space-around;
+  display: flex;
+  align-items: baseline;
+  padding: 1.25rem 1.25rem !important;
+  flex-wrap: wrap;
+}
+
+.Container_canvas {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.Explore_canvas {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.export_list {
+}
+
+::marker {
+  color: #000;
+}
+
+.List_features {
+  background-color: #eadcf8;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  padding: 3em 3em !important;
+}
+
+.text_test {
+  font-size: 3.563rem;
+  font-family: Catamaran;
+}
+
+@media only screen and (max-width: 767px) {
+  .text_test {
+    font-size: 2.2rem;
+  }
+  .Text_preview {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .Header_image {
+    display: none;
+  }
+  .Header_feature {
+    align-items: center;
+  }
+  .Header_exp_text {
+    width: 100%;
+    text-align: center;
+    margin-top: 1.2rem !important;
+  }
+
+  .txt_css1 {
+    font-size: 1.125rem;
+    font-family: Poppins;
+    color: #595858 !important;
+  }
+  .Header_button {
+    margin-top: 2em !important;
+    padding: 1.3em 2em 1.3em 2em !important;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  .Text_wedo {
+    font-size: 1.2rem;
+  }
+  .Canvas_preview {
+    display: none;
+  }
+
+  .Explore_canvas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .List_features {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

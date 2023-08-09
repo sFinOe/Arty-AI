@@ -1,0 +1,9 @@
+.Card_layout {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  border-radius: 20px;
+  padding: 1em 1em !important;
+}

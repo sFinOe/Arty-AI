@@ -1,0 +1,43 @@
+.Swiper_container {
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  width: 85%;
+  padding: 50px 20px 50px 20px !important;
+  border-color: #ebebeb;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.ul_custom {
+  list-style-type: none;
+  padding: 0;
+}
+
+.li_custom {
+  display: flex;
+  align-items: center;
+}
+
+.li_custom::before {
+  content: "";
+  display: inline-block;
+  width: 20px; /* set the width of your icon */
+  height: 20px; /* set the height of your icon */
+  margin-right: 10px; /* add some space between the icon and the text */
+  background-image: url(https://svgshare.com/i/rky.svg); /* set the path to your icon */
+  background-size: cover;
+}
+
+.Pirce_layout_css1 {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 767px) {
+  .Pirce_layout_css1 {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+}

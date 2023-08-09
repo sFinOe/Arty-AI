@@ -1,0 +1,6 @@
+.Img_css{
+	cursor: pointer;
+}
+.Img_css:hover{
+	opacity: 0.8;
+}

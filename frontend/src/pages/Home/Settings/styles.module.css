@@ -1,0 +1,59 @@
+.Setting_container {
+  position: absolute;
+  top: 70px;
+  top: 70px;
+  left: 250px;
+  min-height: max-content;
+  width: calc(100% - 250px);
+  background-color: var(--body-color);
+  transition: var(--tran-05);
+}
+.Setting_container .Setting_text {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 12px 60px !important;
+}
+
+.sidebar.close ~ .Setting_container {
+  left: 78px;
+  /* height: 100%; */
+  width: calc(100% - 78px);
+}
+body.dark .Setting_container .text {
+  color: var(--text-color);
+}
+
+.Setting_card {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 1em 1em 1em !important;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  border-radius: 10px;
+}
+
+.SaveGrid {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.SaveButton_style {
+  font-size: 1rem;
+  font-family: "poppins";
+}
+
+.Upload_circle {
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.Upload_circle:hover {
+  opacity: 0.8;
+}

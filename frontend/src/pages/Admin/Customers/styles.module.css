@@ -1,0 +1,31 @@
+.Admin_Customer_container {
+  position: absolute;
+  top: 70px;
+  top: 70px;
+  left: 250px;
+  min-height: 100vh;
+  width: calc(100% - 250px);
+  background-color: var(--body-color);
+  transition: var(--tran-05);
+}
+.Admin_Customer_container .Customer_text {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 12px 60px !important;
+}
+
+.sidebar.close ~ .Admin_Customer_container {
+  left: 78px;
+  /* height: 100%; */
+  width: calc(100% - 78px);
+}
+body.dark .Admin_Customer_container .text {
+  color: var(--text-color);
+}
+
+.Text_css {
+  font-size: 2rem;
+  font-family: poppins;
+  letter-spacing: 0.1px;
+}

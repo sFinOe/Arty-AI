@@ -1,0 +1,12 @@
+{
+  "app_logo": "/images/logo.png",
+  "app_name": "Image To Art",
+  "classes": [
+    "btn-choice-tab--celebrity2",
+    "btn-choice-tab--sdxl_f5",
+    "btn-choice-tab--sdxl_f3",
+    "btn-choice-tab--sdxl_f2",
+    "btn-choice-tab--sdxl_f1",
+    "btn-choice-tab--sdxl_f4"
+  ]
+}

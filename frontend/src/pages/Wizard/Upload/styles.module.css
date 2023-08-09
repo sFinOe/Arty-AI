@@ -1,0 +1,14 @@
+.Upload_css {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5.5em !important;
+}
+
+@media (max-width: 768px) {
+  .Upload_css {
+    padding: 0.5em !important;
+    /* text-align: center; */
+  }
+}

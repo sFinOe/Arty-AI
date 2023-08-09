@@ -1,0 +1,44 @@
+.User_orders_container {
+  position: absolute;
+  top: 70px;
+  top: 70px;
+  left: 250px;
+  min-height: 100vh;
+  width: calc(100% - 250px);
+  background-color: var(--body-color);
+  transition: var(--tran-05);
+}
+.User_orders_container .orders_text {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 12px 60px !important;
+}
+
+.sidebar.close ~ .User_orders_container {
+  left: 78px;
+  /* height: 100%; */
+  width: calc(100% - 78px);
+}
+body.dark .User_orders_container .text {
+  color: var(--text-color);
+}
+
+.Text_css {
+  font-size: 2rem;
+  font-family: poppins;
+  letter-spacing: 0.1px;
+}
+
+.Search_bar_css {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .Orderheader_css1 h2 {
+    font-size: 0.5rem;
+    background-color: black;
+  }
+}

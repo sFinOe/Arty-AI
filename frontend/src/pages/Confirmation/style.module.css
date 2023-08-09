@@ -1,0 +1,13 @@
+.bg_css {
+  background-color: #fff;
+  padding: 6em 0 !important;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
+
+.Layout_css {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
