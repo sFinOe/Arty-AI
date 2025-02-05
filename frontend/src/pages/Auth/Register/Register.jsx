@@ -83,9 +83,9 @@ function Register() {
       <Spacer y={7} />
       <Center>
         <div>
-          <Image src={Appconfig.app_logo} width="100px" height="35px" />
+          <Image src={Appconfig.app_logo} width="100px" height="50px" />
           <Spacer y={1} />
-          <Grid css={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+          <Grid css={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
             {Sent ? (
               <div
                 style={{
@@ -115,7 +115,16 @@ function Register() {
               </div>
             ) : (
               <Grid className="Login_card">
-                <Grid css={{ display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
+                <Grid
+                  css={{
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    textAlign: "center",
+                  }}
+                >
                   <Text h2 css={{ fontSize: "26px", fontFamily: "poppins", textGradient: "40deg, #7828C8 -40%, #0072F5 60%" }}>
                     Create an account
                   </Text>

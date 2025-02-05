@@ -97,7 +97,7 @@ function Login() {
   return (
     <Container lg>
       <Spacer y={7} />
-      <Image src={Appconfig.app_logo} width="100px" height="35px" />
+      <Image src={Appconfig.app_logo} width="100px" height="50px" />
       <Spacer y={1} />
       <Grid css={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
         <Grid className="Login_card_layout">
@@ -110,7 +110,7 @@ function Login() {
             </Text>
           </Grid>
           <Spacer y={2} />
-          <Grid css={{ display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center" }}>
+          <Grid css={{ width: "100%", display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center" }}>
             <Input
               clearable
               bordered

@@ -4,10 +4,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { FileEntity } from './entities/file.entity';
 import { Repository } from 'typeorm';
 import { S3 } from 'aws-sdk';
-const puppeteer = require('puppeteer');
-const path = require('path');
-const fs = require('fs');
-const https = require('https');
+import puppeteer from 'puppeteer';
+import fs from 'fs';
+import https from 'https';
 
 const downloadImage = (url: string, dest: string): Promise<void> => {
   return new Promise((resolve, reject) => {
@@ -21,8 +20,9 @@ const downloadImage = (url: string, dest: string): Promise<void> => {
         });
       })
       .on('error', (error) => {
-        fs.unlink(dest, () => {});
-        reject(error.message);
+        fs.unlink(dest, () => {
+          reject(error.message);
+        });
       });
   });
 };
@@ -83,7 +83,7 @@ export class FilesService {
     return url;
   }
 
-  async Upload_to_S3(Urls: any, filePath: String): Promise<any> {
+  async Upload_to_S3(Urls: any, filePath: string): Promise<any> {
     const s3 = new S3({
       region: this.configService.get('file.awsS3Region'),
       signatureVersion: 'v4',
@@ -93,8 +93,8 @@ export class FilesService {
       },
     });
 
-    let DownloadPaths = [];
-    let resolvedUrls = [];
+    const DownloadPaths = [];
+    const resolvedUrls = [];
     for (let i = 0; i < Urls.length; i++) {
       const url = Urls[i];
       const filename = `${Date.now()}.jpg`;
@@ -142,14 +142,19 @@ export class FilesService {
     }
 
     try {
-      const browser = await puppeteer.launch({ headless: 'new' });
+      const browser = await puppeteer.launch({
+        headless: 'new',
+        timeout: 60000,
+      });
       const page = await browser.newPage();
       await page.goto('https://newprofilepic.com');
       const fileInput = await page.$('input[type=file]');
       await fileInput.uploadFile(filePath);
 
-      await page.waitForSelector('div.container button');
-      await page.click('div.container button');
+      await page.waitForSelector(classes[0], {
+        visible: true,
+        timeout: 80000,
+      });
 
       let timerPresent = true;
       while (timerPresent) {
@@ -167,7 +172,7 @@ export class FilesService {
         }
       }
 
-      let Urls = [];
+      const Urls = [];
       for (let i = 0; i < classes.length; i++) {
         const className = classes[i];
         const button = await page.$(`.${className}`);
@@ -175,13 +180,13 @@ export class FilesService {
         if (style) {
           const backgroundImage = await style.getProperty('backgroundImage');
           if (backgroundImage) {
-            const urlHandle = await backgroundImage.jsonValue();
+            const urlHandle = (await backgroundImage.jsonValue()) as string;
             const url = urlHandle.slice(4, -1).replace(/"/g, '');
             if (!url.includes('assets.photo-cdn.net')) Urls.push(url);
           }
         }
       }
-      browser.close();
+      await browser.close();
 
       return await this.Upload_to_S3(Urls, filePath);
     } catch (error) {
@@ -218,8 +223,8 @@ export class FilesService {
     const fileInput = await page.$('input[type=file]');
     await fileInput.uploadFile(filePath);
 
-    let Urls = [];
-    let DownloadPaths = [];
+    const Urls = [];
+    const DownloadPaths = [];
     const classes = ['room-01', 'room-03', 'room-07'];
 
     for (let i = 0; i < classes.length; i++) {
@@ -248,8 +253,8 @@ export class FilesService {
       await page.waitForSelector('.btn-save');
       await page.click('.btn-save');
 
-      const url = new Promise((resolve, reject) => {
-        page.on('response', async (response) => {
+      const url = new Promise((resolve) => {
+        page.on('response', (response) => {
           const disposition = response.headers()['content-disposition'];
           const filename = disposition?.split('=')[1]?.replace(/"/g, '');
           if (filename) {

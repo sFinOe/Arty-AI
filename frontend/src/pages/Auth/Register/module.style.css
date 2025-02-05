@@ -6,12 +6,13 @@
 }
 
 .Login_card {
+  width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  padding: 60px 70px !important;
+  padding: 20px !important;
   border-radius: 25px;
   box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }

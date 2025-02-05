@@ -50,7 +50,7 @@ function Default_Navigation() {
     <Navbar variant="sticky" css={{ backgroundColor: "#fff" }}>
       <Navbar.Brand>
         <Link to="/">
-          <Image src={Appconfig.app_logo} alt="Logo" style={{ width: "120px", height: "45px" }} />
+          <Image src={Appconfig.app_logo} alt="Logo" style={{ width: "130px" }} />
         </Link>
       </Navbar.Brand>
       <Navbar.Content enableCursorHighlight activeColor="primary" hideIn="xs" variant="highlight-rounded">
